@@ -25,14 +25,14 @@ const Header: React.FC = () => {
       <div className="bg-gray-800 py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-sm">
           <div className="flex items-center space-x-6">
-            <div className="flex items-center space-x-2">
+            <a href="tel:01244389660" aria-label="Call 01244389660" className="flex items-center space-x-2 hover:text-orange-400">
               <Phone size={14} />
               <span>01244389660</span>
-            </div>
-            <div className="flex items-center space-x-2">
+            </a>
+            <a href="mailto:saggitechindia@gmail.com" aria-label="Email saggitechindia@gmail.com" className="flex items-center space-x-2 hover:text-orange-400">
               <Mail size={14} />
               <span>saggitechindia@gmail.com</span>
-            </div>
+            </a>
           </div>
           {/* <Link 
             to="/contact" 
