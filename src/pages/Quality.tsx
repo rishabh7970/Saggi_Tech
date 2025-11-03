@@ -277,7 +277,7 @@ const Quality: React.FC = () => {
               <CountUp end={5} className="text-4xl font-bold text-orange-500 mb-2" />
               <div className="text-gray-600">Certified Quality Inspectors</div>
             </div> */}
-            <div className="text-center">
+            <div className="text-center md:col-start-2 md:col-span-1">
               <CountUp end={15} suffix="+" className="text-4xl font-bold text-orange-500 mb-2" />
               <div className="text-gray-600">Years Average Experience</div>
             </div>

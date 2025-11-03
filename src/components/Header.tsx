@@ -19,7 +19,7 @@ const Header: React.FC = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
-  return (
+  return (  
     <header className="bg-gray-900 text-white sticky top-0 z-50">
       {/* Top contact bar */}
       <div className="bg-gray-800 py-2">
@@ -34,15 +34,14 @@ const Header: React.FC = () => {
               <span>saggitechindia@gmail.com</span>
             </div>
           </div>
-          <Link 
+          {/* <Link 
             to="/contact" 
             className="bg-orange-500 hover:bg-orange-600 px-4 py-1 rounded text-white font-medium transition-colors"
           >
             Request Quote
-          </Link>
-        </div>
+          </Link> */}
+          </div>
       </div>
-
       {/* Main header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-5 md:py-6">
@@ -94,26 +93,69 @@ const Header: React.FC = () => {
         </div>
 
         {/* Mobile navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4">
-            <nav className="flex flex-col space-y-4">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`font-medium transition-colors ${
-                    isActive(item.href)
-                      ? 'text-orange-500'
-                      : 'text-white hover:text-orange-500'
-                  }`}
-                >
-                  {item.name}
+        <div 
+          className={`md:hidden fixed inset-0 z-50 bg-gray-900 transition-transform duration-300 ease-in-out ${
+            isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
+        >
+          <div className="flex flex-col h-full">
+            <div className="px-4 py-6 border-b border-gray-800">
+              <div className="flex items-center justify-between">
+                <Link to="/" className="flex items-center space-x-2" onClick={() => setIsMenuOpen(false)}>
+                  <img src={logoImg} alt="SAGGI TECH Logo" className="h-12 w-auto" />
                 </Link>
-              ))}
+                <button
+                  onClick={() => setIsMenuOpen(false)}
+                  className="p-2 text-white hover:text-orange-500 transition-colors"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+            </div>
+            <nav className="flex-1 px-4 py-6 overflow-y-auto">
+              <div className="flex flex-col space-y-4">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`block px-4 py-3 rounded-lg text-lg font-medium transition-colors ${
+                      isActive(item.href)
+                        ? 'bg-orange-500 text-white'
+                        : 'text-white hover:bg-gray-800 hover:text-orange-500'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
             </nav>
+            {/* Mobile menu footer */}
+            <div className="px-4 py-6 border-t border-gray-800">
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <Phone size={20} className="text-orange-500" />
+                  <a href="tel:01244389660" className="text-white hover:text-orange-500 transition-colors">
+                    01244389660
+                  </a>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Mail size={20} className="text-orange-500" />
+                  <a href="mailto:saggitechindia@gmail.com" className="text-white hover:text-orange-500 transition-colors">
+                    saggitechindia@gmail.com
+                  </a>
+                </div>
+                <Link 
+                  to="/contact" 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block w-full text-center bg-orange-500 hover:bg-orange-600 px-4 py-3 rounded-lg text-white font-medium transition-colors"
+                >
+                  Request Quote
+                </Link>
+              </div>
+            </div>
           </div>
-        )}
+        </div>
       </div>
     </header>
   );
